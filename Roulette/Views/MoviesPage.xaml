@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Roulette.Views.MoviesPage"
+             Title="Movies">
+    <StackLayout>
+        <SearchBar Placeholder="Search by Title..." TextChanged="OnTextChanged"/>
+        <ActivityIndicator IsRunning="{Binding IsSearching}"/>
+        <Frame x:Name="notFound" HasShadow="False" Padding="20" IsVisible="False">
+            <Label Text="No movies found matching your search." TextColor="Gray"/>
+        </Frame>
+        <ListView x:Name="movieList" ItemSelected="MovieList_ItemSelected" IsVisible="False">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell 
+                        Text="{Binding Title}" 
+                        Detail="{Binding Year}" 
+                        ImageSource="{Binding Poster}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </StackLayout>
+</ContentPage>
